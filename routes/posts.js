@@ -81,6 +81,7 @@ router.get('/:id/edit', middleware.checkPostOwnership, function(req, res) {
 
 // UPDATE CAMPGROUND ROUTE
 router.put('/:id', middleware.checkPostOwnership, function(req, res) {
+	req.body.post = req.sanitize(req.body.post);
 	//find and update the correct post
 	Post.findByIdAndUpdate(req.params.id, req.body.post, function(err, updatedPost) {
 		if(err) {
