@@ -24,7 +24,7 @@ var	indexRoutes			= require('./routes/index'),
 // mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
 
 //REMOTE MONGODB
-mongoose.connect('mongodb://nikshepav:<insert_password_here>@ds111078.mlab.com:11078/post-io', {useMongoClient:true});
+mongoose.connect('mongodb://nikshepav:password@ds111078.mlab.com:11078/post-io', {useMongoClient:true});
 
 app.use(bodyPraser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');

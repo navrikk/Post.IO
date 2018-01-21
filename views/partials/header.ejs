@@ -30,7 +30,6 @@
 		<div class="ui container">
 			<% if(success && success.length > 0) { %>
 				<div class="ui big success message">
-					<a href="#"><i class="close icon"></i></a>
 					<div class="header">
 						<p style="text-align: center;">
 							<%= success %>
@@ -39,8 +38,7 @@
 				</div>
 			<% } %>
 			<% if(error && error.length > 0) { %>
-				<div class="ui big error message">	
-					<a href="#"><i class="close icon"></i></a>
+				<div class="ui big error message">
 					<div class="header">
 						<p style="text-align: center;">
 							<%= error %>
