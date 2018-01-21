@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+
+<div class="ui container">
+    <div class="row">
+        <h1 style="text-align: center">Edit <%= post.name %></h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form class="ui form" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+                <div class="ui fluid left icon input field">
+                    <input type="text" name="post[name]" value="<%= post.name %>">
+                    <i class="user icon"></i>
+                </div>
+                <div class="ui fluid left icon input field">
+                    <input type="text" name="post[image]" value="<%= post.image %>">
+                    <i class="photo icon"></i>
+                </div>
+                <div class="ui fluid input field">
+                    <textarea name="post[desc]"><%= post.description %></textarea>
+                </div>
+                <div class="field">
+                    <button class="ui right floated animated fade positive button">
+                        <div class="visible content">
+                            Submit
+                        </div>
+                        <div class="hidden content">
+                            <i class="right arrow icon"></i>
+                        </div>
+                    </button>
+                </div>
+            </form>
+            <a class="ui left floated animated fade button" href="/posts/<%= post._id %>">
+                <div class="visible content">
+                    Go Back
+                </div>
+                <div class="hidden content">
+                    <i class="left arrow icon"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

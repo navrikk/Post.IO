@@ -1,0 +1,74 @@
+<% include ../partials/header %>
+
+	<div class="ui main text container segment">
+		<div class="ui huge header">
+			<a class="ui left floated animated fade secondary button" href="/posts">
+                <div class="visible content">
+                    Go Back
+                </div>
+                <div class="hidden content">
+                    <i class="left arrow icon"></i>
+                </div>
+            </a>
+            <p style="text-align: center;">
+				<%= post.name %>
+			</p>
+		</div>
+		<div class="ui top attached">
+			<div class="item">
+				<img class="ui centered rounded image" src="<%= post.image %>">
+				<p></p>
+				<p>
+					<%= post.description %>
+				</p>
+				<p>
+					<em>
+						Submitted By <%= post.author.username %>
+					</em>
+				</p>
+			</div>
+			<% if(currentUser && post.author.id.equals(currentUser._id)) { %>
+				<a class="ui mini orange button" href="/posts/<%= post._id %>/edit">
+					Edit
+				</a>
+				<form id="delete-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+					<button class="ui mini red button">Delete</button>
+				</form>
+			<% } %>
+		</div>
+		<p></p>
+		<div class="ui stacked segments">
+			<div class="ui segment">
+				<form class="ui form" action="/posts/<%= post._id %>/comments" method="POST">
+					<div class="ui left icon fluid action input inline field">
+						<input type="text" name="comment[text]" placeholder="Type here...">
+						<i class="comment icon"></i>
+						<button class="ui primary button">
+							Add
+						</button>
+					</div>
+				</form>
+			</div>
+			<% post.comments.forEach(function(comment) { %>
+				<div class="ui fluid segment">
+					<strong><%= comment.author.username %></strong>
+					<p>
+						<%= comment.text %>
+					</p>
+					<% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+						<a class="ui mini orange button" href="/posts/<%= post._id %>/comments/<%= comment._id %>/edit">
+							Edit
+						</a>
+						<form id="delete-form" action="/posts/<%= post._id %>/comments/<%=  comment._id%>?_method=DELETE" method="POST">
+							<button class="ui mini red button">
+								Delete
+							</button>
+						</form>
+					<% } %>
+				</div>
+			<% }); %>
+		</div>	
+	</div>
+</div>
+
+<%  include ../partials/footer %>

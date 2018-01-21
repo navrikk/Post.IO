@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+<div class="ui main text container">
+	<h1 class="ui huge header">
+		<a href="/posts/new" class="ui animated positive right floated fade button" tabindex="0">
+  			<div class="visible content">
+  				Add a new post
+  			</div>
+  			<div class="hidden content">
+    			<i class="right arrow icon"></i>
+  			</div>
+		</a>
+		<i class="icon map"></i>
+		<div class="content">
+			Welcome To Post.IO
+		</div>
+		<div class="sub header">
+			Be part of a community based article posting network.
+		</div>
+	</h1>
+	<hr/>
+	<div class="ui top attached segment">
+		<div class="ui divided items">
+			<% posts.forEach(function(post) { %>
+				<div class="item">
+					<div class="image">
+						<img src="<%= post.image %>"/>
+					</div>
+					<div class="content">
+						<div class="header">
+							<% if(post.name.length > 30) { %>
+								<%= post.name.substring(0, 30) %>...
+							<% } else { %>
+								<%= post.name %>
+							<% } %>		
+						</div>
+					</div>
+					<div class="extras">
+						<a href="/posts/<%= post._id %>" class="ui animated button">
+							<div class="visible content">
+								More info
+							</div>
+							<div class="hidden content">
+								<i class="right arrow icon"></i>
+							</div>
+						</a>
+					</div>
+				</div>
+			<% }); %>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>
