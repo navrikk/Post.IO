@@ -21,7 +21,7 @@ var	indexRoutes			= require('./routes/index'),
 	commentRoutes		= require('./routes/comments');
 
 //LOCAL MONGODB
-// mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
+mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
 
 //REMOTE MONGODB
 mongoose.connect('mongodb://nikshepav:<insert_password_here>@ds111078.mlab.com:11078/post-io', {useMongoClient:true});
