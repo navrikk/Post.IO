@@ -1,12 +1,13 @@
 //requiring packages
-var express 		= require('express'),
-	app 			= express(),
-	bodyPraser 		= require('body-parser'),
-	mongoose 		= require('mongoose'),
-	passport		= require('passport'),
-	LocalStrategy 	= require('passport-local'),
-	methodOverride	= require('method-override'),
-	flash 			= require('connect-flash');
+var express 			= require('express'),
+	app 				= express(),
+	bodyPraser 			= require('body-parser'),
+	mongoose 			= require('mongoose'),
+	passport			= require('passport'),
+	LocalStrategy 		= require('passport-local'),
+	methodOverride		= require('method-override'),
+	flash 				= require('connect-flash'),
+	expressSanitizer 	= require('express-sanitizer');
 
 //requiring models
 var User 		= require('./models/user'),
@@ -30,6 +31,7 @@ app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 app.use(flash());
+app.use(expressSanitizer());
 
 
 // PASSPORT CONFIGURATION

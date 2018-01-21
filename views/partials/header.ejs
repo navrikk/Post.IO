@@ -4,6 +4,7 @@
 		<title>Post.IO</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
 		<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+		<link rel="icon" href="https://image.flaticon.com/icons/svg/137/137530.svg">
 	</head>
 	<body>
 		<div class="ui fixed inverted menu">
@@ -29,6 +30,7 @@
 		<div class="ui container">
 			<% if(success && success.length > 0) { %>
 				<div class="ui big success message">
+					<a href="#"><i class="close icon"></i></a>
 					<div class="header">
 						<p style="text-align: center;">
 							<%= success %>
@@ -38,6 +40,7 @@
 			<% } %>
 			<% if(error && error.length > 0) { %>
 				<div class="ui big error message">	
+					<a href="#"><i class="close icon"></i></a>
 					<div class="header">
 						<p style="text-align: center;">
 							<%= error %>
