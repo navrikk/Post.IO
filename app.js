@@ -21,10 +21,10 @@ var	indexRoutes		= require('./routes/index'),
 	commentRoutes	= require('./routes/comments');
 
 //LOCAL MONGODB
-// mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
+mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
 
 //REMOTE MONGODB
-mongoose.connect('mongodb://nikshepav:password@ds111078.mlab.com:11078/post-io', {useMongoClient:true});
+// mongoose.connect('mongodb://nikshepav:<insert_password_here>@ds111078.mlab.com:11078/post-io', {useMongoClient:true});
 
 app.use(bodyPraser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
@@ -61,9 +61,9 @@ app.use('/posts/:id/comments', commentRoutes);
 
 
 //LOCAL DEPLOYMENT
-// app.listen(portNum = 3001, function(req, res) {
-// 	console.log('Post.IO server (' + portNum + ') is online.....');
-// });
+app.listen(portNum = 3001, function(req, res) {
+	console.log('Post.IO server (' + portNum + ') is online.....');
+});
 
 //REMOTE DEPLOYMENT
-app.listen(process.env.PORT, process.env.IP);
+// app.listen(process.env.PORT, process.env.IP);
