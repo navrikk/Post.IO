@@ -24,7 +24,7 @@
 			<% posts.forEach(function(post) { %>
 				<div class="item">
 					<div class="image">
-						<img src="<%= post.image %>"/>
+						<img src="<%= post.image %>" alt="Image not found" onerror="this.onerror=null;this.src='https://renderman.pixar.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png';"/>
 					</div>
 					<div class="content">
 						<div class="header">
@@ -34,16 +34,30 @@
 								<%= post.name %>
 							<% } %>		
 						</div>
-					</div>
-					<div class="extras">
-						<a href="/posts/<%= post._id %>" class="ui animated button">
-							<div class="visible content">
-								More info
-							</div>
-							<div class="hidden content">
-								<i class="right arrow icon"></i>
-							</div>
-						</a>
+						<div class="meta">
+							<span>
+								<%= post.created.toDateString() %>
+							</span>
+						</div>
+						<div class="description">
+							<p>
+								<% if(post.description.length >96) { %>
+									<%- post.description.substring(0, 100) %>...
+								<% } else { %>
+									<%- post.description.substring(0, 100) %>
+								<% } %>
+							</p>
+						</div>
+						<div class="extras">
+							<a href="/posts/<%= post._id %>" class="ui animated button">
+								<div class="visible content">
+									More info
+								</div>
+								<div class="hidden content">
+									<i class="right arrow icon"></i>
+								</div>
+							</a>
+						</div>
 					</div>
 				</div>
 			<% }); %>

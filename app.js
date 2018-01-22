@@ -10,18 +10,18 @@ var express 			= require('express'),
 	expressSanitizer 	= require('express-sanitizer');
 
 //requiring models
-var User 		= require('./models/user'),
+var User 	= require('./models/user'),
 	Post 	= require('./models/post'),
-	Comment 	= require('./models/comment');
+	Comment = require('./models/comment');
 
 
 //requiring routes	
-var	indexRoutes			= require('./routes/index'),
-	postRoutes 	= require('./routes/posts'),
-	commentRoutes		= require('./routes/comments');
+var	indexRoutes		= require('./routes/index'),
+	postRoutes 		= require('./routes/posts'),
+	commentRoutes	= require('./routes/comments');
 
 //LOCAL MONGODB
-mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
+// mongoose.connect('mongodb://localhost/post_io', {useMongoClient: true});
 
 //REMOTE MONGODB
 mongoose.connect('mongodb://nikshepav:password@ds111078.mlab.com:11078/post-io', {useMongoClient:true});

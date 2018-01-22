@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 router.post('/', middleware.isLoggedIn, function(req, res) {
 	var name = req.body.name;
 	var image = req.body.image;
-	var desc = req.sanitize(req.body.desc);
+	var desc = req.sanitize(req.body.description);
 	var author = {
 		id: req.user._id,
 		username: req.user.username
@@ -81,7 +81,7 @@ router.get('/:id/edit', middleware.checkPostOwnership, function(req, res) {
 
 // UPDATE CAMPGROUND ROUTE
 router.put('/:id', middleware.checkPostOwnership, function(req, res) {
-	req.body.post = req.sanitize(req.body.post);
+	req.body.post.description = req.sanitize(req.body.post.description);
 	//find and update the correct post
 	Post.findByIdAndUpdate(req.params.id, req.body.post, function(err, updatedPost) {
 		if(err) {

@@ -13,3 +13,9 @@
 #delete-form {
 	display: inline;
 }
+
+pre {
+	font-size: 18px;
+	white-space: pre-line;
+	font-family: 'Roboto', sans-serif;
+}

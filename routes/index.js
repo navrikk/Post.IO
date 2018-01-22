@@ -17,17 +17,23 @@ router.get('/register', function(req, res) {
 
 //handle sign up logic
 router.post('/register', function(req, res) {
-	var newUser = new User({username: req.body.username});
-	User.register(newUser, req.body.password, function(err, user) {
-		if(err) {
-			req.flash('error', err.message);
-			return res.render('register');
-		}
-		passport.authenticate('local')(req, res, function() {
-			req.flash('success', 'Welcome here, ' + user.username + '.');
-			res.redirect('/posts');
+	//Form validation - confirming password
+	if(req.body.password === req.body.confirm_password) {
+		var newUser = new User({username: req.body.username});
+		User.register(newUser, req.body.password, function(err, user) {
+			if(err) {
+				req.flash('error', err.message);
+				return res.redirect('register');
+			}
+			passport.authenticate('local')(req, res, function() {
+				req.flash('success', 'Welcome here, ' + user.username + '.');
+				res.redirect('/posts');
+			});
 		});
-	});
+	} else {
+		req.flash('error', 'Passwords do not match. Try again.');
+		return res.redirect('/register');
+	}
 });
 
 //show the login form
@@ -39,8 +45,7 @@ router.get('/login', function(req, res) {
 router.post('/login', passport.authenticate('local', {
 	successRedirect: '/posts',
 	failureRedirect: '/login'
-	}), function(req, res) {
-});
+	}));
 
 //logout route
 router.get('/logout', function(req, res) {
