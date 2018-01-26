@@ -17,6 +17,11 @@ router.get('/register', function(req, res) {
 
 //handle sign up logic
 router.post('/register', function(req, res) {
+	//Form validation - limiting username size
+	if(req.body.username.length > 14) {
+		req.flash('error', 'Enter a username of length between 0-14');
+		return res.redirect('/register');
+	}
 	//Form validation - confirming password
 	if(req.body.password === req.body.confirm_password) {
 		var newUser = new User({username: req.body.username});

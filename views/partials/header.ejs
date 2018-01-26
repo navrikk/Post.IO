@@ -9,9 +9,9 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 	</head>
 	<body>
-		<div class="ui fixed inverted menu">
+		<div class="ui fixed inverted labelled icon menu">
 			<div class="ui container">
-				<div class="ui header item">
+				<div class="ui header link item">
 					<a href="/">
 						<i class="mail forward icon"></i>
 						Post.IO
@@ -19,11 +19,28 @@
 				</div>
 				<div class="right menu">
 					<% if(!currentUser) { %>
-						<a class="item" href="/login">Log In</a>
-						<a class="item" href="/register">Sign Up</a>
+						<div class="link item">
+							<a href="/login">
+								<i class="sign in icon"></i>
+								Log In
+							</a>
+						</div>
+						<div class="link item">
+							<a href="/register">
+								<i class="add user icon"></i>
+								Sign Up
+							</a>
+						</div>
 					<% } else { %>
-						<a class="item">Signed in as <%= currentUser.username %></a>
-						<a class="item" href="/logout">Log Out</a>
+						<div class="link item">
+							<a><%= currentUser.username %></a>
+						</div>
+						<div class="link item">
+							<a href="/logout">
+								<i class="sign out icon"></i>
+								Log Out
+							</a>
+						</div>
 					<% } %>
 				</div>
 			</div>
@@ -31,7 +48,7 @@
 		<p style="margin-top: 5em;"></p>
 		<div class="ui container">
 			<% if(success && success.length > 0) { %>
-				<div class="ui big success message">
+				<div class="ui big success floating message">
 					<div class="header">
 						<p style="text-align: center;">
 							<%= success %>
@@ -40,7 +57,7 @@
 				</div>
 			<% } %>
 			<% if(error && error.length > 0) { %>
-				<div class="ui big error message">
+				<div class="ui big error floating message">
 					<div class="header">
 						<p style="text-align: center;">
 							<%= error %>
